@@ -330,4 +330,4 @@ ASALocalRun/
 .mfractor/
 
 #ClientSide Libs
-PersonalDotNetSite\wwwroot\lib
+PersonalDotNetSite/wwwroot/lib
