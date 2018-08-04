@@ -331,3 +331,6 @@ ASALocalRun/
 
 #ClientSide Libs
 PersonalDotNetSite/wwwroot/lib
+
+#Don't upload your DB connection string to the web
+PersonalDotNetSite/appsettings.json
