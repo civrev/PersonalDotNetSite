@@ -1,14 +1,17 @@
 ﻿@model SkillsViewModel
 
-@foreach (var skill in Model.Skills)
-{
-<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-    <img class="card-img-top" src="@skill.ImageThumbnailUrl" alt="@skill.Name">
-    <div class="card-body">
-        <h5 class="card-title">@skill.Name</h5>
-        <p class="card-text">@skill.ShortDescription</p>
-        <a href="#" class="btn btn-primary">A Button Is Here</a>
-    </div>
+<div class="row">
+    @foreach (var skill in Model.Skills)
+    {
+        <div class="col-xs-12 col-md-3">
+            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <img class="card-img-top" style="max-height: 14rem" src="@skill.ImageThumbnailUrl" alt="@skill.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@skill.Name</h5>
+                    <p class="card-text">@skill.ShortDescription</p>
+                    <a href="#" class="btn btn-primary">A Button Is Here</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>
-
-}
