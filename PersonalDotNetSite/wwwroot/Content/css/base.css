@@ -1,0 +1,165 @@
+body {
+	margin: 0;
+	font-family: Roboto,sans-serif;
+	font-weight: 400;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #202124;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,.5);
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    height: 72px;
+    line-height: 36px;
+}
+
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.sticky + .content {
+  padding-top: 88px;
+}
+
+/* Add a color to the active/current link */
+.navicons {
+	padding-top: 8px;
+}
+
+.footer {
+	background-color: #202124;
+    overflow: hidden;
+    padding-left: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.5);
+    width: 100%;
+    color: #f2f2f2;
+}
+
+.dropdown {
+    list-style-type: none;
+    display: flex;
+    border: none;
+    outline: none;
+    background: inherit;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    padding-bottom: 8px;
+    font-size-adjust: 1.4;
+    height: 72px;
+    line-height: 36px;
+}
+
+.dropdown:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.dropdown-content{
+    display: none;
+    background-color: #202124;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,.5);
+    width: 100%;
+}
+
+.dropdown-content ol{
+    list-style-type: none;
+}
+
+.dropdown-content ol li{
+    height: 72px;
+    width: 100%;
+    border-bottom: 3px solid rgba(158,158,158,.3);
+    box-shadow-bottom: 0 4px 8px rgba(0,0,0,.5);
+    padding-top: 22px
+}
+
+.dropdown-content ol li a{
+    text-decoration: none;
+    font-size: 17px;
+    color: #f2f2f2;
+}
+
+@media only screen and (min-width: 0px) {
+    .topnav a {
+        display: flex;
+        font-size-adjust: 1.2
+    }
+
+    .dropdown-content ol li a{
+        font-size-adjust: 1.2
+    }
+
+	.menu-content{
+        display: none;
+	}
+}
+
+@media only screen and (min-width: 720px) {
+	.topnav a {
+        display: flex;
+	    font-size-adjust: 0.5
+	}
+
+    .dropdown {
+        display: none;
+    }
+
+    .dropdown-content{
+        display: none;
+    }
+
+    .menu-content{
+        display: flex;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+	.topnav a {
+        display: flex;
+	    font-size-adjust: 0.8
+	}
+}
+
+@media only screen and (min-width: 1400px) {
+	.topnav a {
+        display: flex;
+	    font-size-adjust: 1.2
+	}
+}
