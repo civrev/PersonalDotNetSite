@@ -7,9 +7,10 @@ namespace PersonalDotNetSite.Models
 {
     public interface IProjectsRepositiory
     {
-        //get all the projects from the DB
+        //get all projects, but leave out fields that are only displayed in the detailed page
         IEnumerable<Project> Projects { get; }
 
-        Project getProjectByName(string name);
+        //show get the entire project with this unique name
+        Project getProjectByName(int id);
     }
 }

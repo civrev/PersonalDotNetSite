@@ -16,6 +16,16 @@ body {
     justify-content: space-between;
 }
 
+.topnav .fas {
+        color: #f2f2f2;
+        float: left;
+        text-align: center;
+        padding: 14px 6px;
+        text-decoration: none;
+        font-size: 17px;
+        height: 72px;
+    }
+
 /* Style the links inside the navigation bar */
 .topnav a {
     float: left;
@@ -106,7 +116,6 @@ body {
     height: 72px;
     width: 100%;
     border-bottom: 3px solid rgba(158,158,158,.3);
-    box-shadow: 0 4px 8px rgba(0,0,0,.5);
     padding-top: 22px
 }
 
@@ -119,11 +128,16 @@ body {
 @media only screen and (min-width: 0px) {
     .topnav a {
         display: flex;
-        font-size-adjust: 1.2
+        font-size-adjust: 1.2;
+    }
+
+    .topnav .fas {
+        display: flex;
+        font-size-adjust: 1.2;
     }
 
     .dropdown-content ol li a{
-        font-size-adjust: 1.2
+        font-size-adjust: 1.2;
     }
 
 	.menu-content{
@@ -134,8 +148,13 @@ body {
 @media only screen and (min-width: 720px) {
 	.topnav a {
         display: flex;
-	    font-size-adjust: 0.5
+	    font-size-adjust: 0.5;
 	}
+
+    .topnav .fas {
+        display: flex;
+        font-size-adjust: 0.5;
+    }
 
     .dropdown {
         display: none;
@@ -156,11 +175,21 @@ body {
         display: flex;
 	    font-size-adjust: 0.8
 	}
+
+    .topnav .fas {
+        display: flex;
+        font-size-adjust: 0.8;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
 	.topnav a {
         display: flex;
-	    font-size-adjust: 1.2
+	    font-size-adjust: 1.2;
 	}
+
+    .topnav .fas {
+        display: flex;
+        font-size-adjust: 1.2;
+    }
 }

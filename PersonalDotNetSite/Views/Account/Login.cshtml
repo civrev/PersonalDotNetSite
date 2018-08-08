@@ -1,0 +1,17 @@
+﻿@model AccountViewModel
+
+<h3>Authentication of new users is currently not supported at this time</h3>
+
+<div class="tooltipNoBS">
+    <i class="fas fa-unlock-alt" onclick="showAdmin()"></i>
+    <span class="tooltiptext">For if you're Christian Watts</span>
+</div>
+<div class="tooltipNoBS">
+    <i class="fas fa-question-circle"></i>
+    <span class="tooltiptext">Have questions about logging in?</span>
+</div>
+
+<div id="adminLogin">
+    <a asp-area="" asp-controller="Account" asp-action="Signin" class="btn btn-primary btn-sm">Log in</a>
+    <a asp-area="" asp-controller="Account" asp-action="SignOut" class="btn btn-primary btn-sm">Log out</a>
+</div>

@@ -1,0 +1,30 @@
+﻿/* row is a bootstrap class I am adding to */
+.row {
+    position: relative;
+}
+
+.ldesc {
+    display: none;
+}
+
+.editable {
+    display: none;
+}
+
+.bigCardImage {
+    display: none;
+}
+
+.addcard.fas {
+    font-size: 300px;
+    margin: 14px;
+    color: chartreuse;
+}
+
+.addcard.fas:hover {
+    color:lightseagreen;
+}
+
+#newcard + .cards {
+    display: none;
+}

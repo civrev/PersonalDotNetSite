@@ -7,6 +7,8 @@ namespace PersonalDotNetSite.Models
 {
     public class Project
     {
+        public int Id { get; set; }
+
         //name of skill
         public string Name { get; set; }
 
@@ -19,5 +21,14 @@ namespace PersonalDotNetSite.Models
         //pictures associated with this skill
         public string ImageUrl { get; set; }
         public string ImageThumbnailUrl { get; set; }
+
+        public Project()
+        {
+            ImageThumbnailUrl = "/Images/defaultSmall.png";
+            ImageUrl = "/Images/defaultBig.jpg";
+            Name = "No Title";
+            ShortDescription = "No Short Description";
+            LongDescription = "No Long Description";
+        }
     }
 }

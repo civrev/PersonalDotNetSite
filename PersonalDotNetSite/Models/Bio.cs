@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.Models
 {
-    public interface ISkillsRepository
+    public class Bio
     {
-        //get all the skills from the DB
-        IEnumerable<Skill> Skills { get; }
+        public string FullBio { get; set; }
     }
 }

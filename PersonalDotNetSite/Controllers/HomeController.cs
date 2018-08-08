@@ -9,12 +9,12 @@ using PersonalDotNetSite.ViewModels;
 
 namespace PersonalDotNetSite.Controllers
 {
-    public class IndexController : Controller
+    public class HomeController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
         {
-            IndexViewModel model = new IndexViewModel();
+            HomeViewModel model = new HomeViewModel();
             ViewBag.Title = "Christian Watts - Welcome!";
             return View(model);
         }

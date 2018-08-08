@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.ViewModels
 {
-    public class ContactViewModel
+    public class ContactViewModel: GeneralViewModel
     {
         public string Location { get; set; }
         public string Email { get; set; }

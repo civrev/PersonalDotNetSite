@@ -10,11 +10,16 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/css/base.css" rel="stylesheet" />
+    <link href="~/Content/css/card.css" rel="stylesheet" />
+    <link href="~/Content/css/login.css" rel="stylesheet" />
 
     <script src="~/Content/js/base.js"></script>
+    <script src="~/Content/js/card.js"></script>
+    <script src="~/Content/js/login.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 
@@ -27,9 +32,25 @@
 
     <div class="navigation-bar" id="navigation-bar">
         <div id="topnav" class="topnav">
-            <a href="{{ url_for('index') }}">
-                <i class="material-icons navicons">home</i>
-            </a>
+            <div>
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="material-icons navicons">home</i>
+                </a>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-area="" asp-controller="Account" asp-action="SignOut">
+                            <i class="fas fa-check-square" data-toggle="tooltip" data-placement="top" title="You're authenticated! Click to sign out"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="Account" asp-action="Signin">
+                            <i class="fas fa-times-circle" data-toggle="tooltip" data-placement="top" title="You're not authenticated. Click to sign in. New users are not supported at this time"></i>
+                        </a>
+                    }
+                }
+            </div>
 
             <nav>
                 <button id="menu-btn" class="dropdown">
@@ -37,12 +58,12 @@
                 </button>
                 <div id="menu-content" class="menu-content">
                     <ul>
-                        <li><a href="{{ url_for('bio') }}">Bio</a></li>
-                        <li><a href="{{ url_for('skills') }}">Skills</a></li>
-                        <li><a href="{{ url_for('projects') }}">Projects</a></li>
-                        <li><a href="{{ url_for('website') }}">This Website</a></li>
-                        <li><a href="{{ url_for('interact') }}">Interact</a></li>
-                        <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+                        <li><a asp-controller="Bio" asp-action="Index">Bio</a></li>
+                        <li><a asp-controller="Skills" asp-action="List">Skills</a></li>
+                        <li><a asp-controller="Projects" asp-action="List">Projects</a></li>
+                        <li><a asp-controller="Website" asp-action="Index">This Website</a></li>
+                        <li><a asp-controller="Interact" asp-action="Index">Interact</a></li>
+                        <li><a asp-controller="Contact" asp-action="Index">Contact Me</a></li>
                     </ul>
                 </div>
             </nav>
@@ -50,12 +71,12 @@
 
         <div id="dropdown-content" class="dropdown-content content">
             <ol>
-                <li><a href="{{ url_for('bio') }}">Bio</a></li>
-                <li><a href="{{ url_for('skills') }}">Skills</a></li>
-                <li><a href="{{ url_for('projects') }}">Projects</a></li>
-                <li><a href="{{ url_for('website') }}">This Website</a></li>
-                <li><a href="{{ url_for('interact') }}">Interact</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+                <li><a asp-controller="Bio" asp-action="Index">Bio</a></li>
+                <li><a asp-controller="Skills" asp-action="List">Skills</a></li>
+                <li><a asp-controller="Projects" asp-action="List">Projects</a></li>
+                <li><a asp-controller="Website" asp-action="Index">This Website</a></li>
+                <li><a asp-controller="Interact" asp-action="Index">Interact</a></li>
+                <li><a asp-controller="Contact" asp-action="Index">Contact Me</a></li>
             </ol>
         </div>
     </div>

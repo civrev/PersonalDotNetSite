@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.ViewModels
 {
-    public class WebsiteViewModel
+    public class WebsiteViewModel: GeneralViewModel
     {
     }
 }

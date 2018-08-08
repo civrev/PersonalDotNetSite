@@ -1,4 +1,5 @@
-window.onload = function(){
+window.onload = function () {
+
 	window.onscroll = function() {stickyNavbar()};
 
 	var navbar = document.getElementById("topnav");
@@ -7,7 +8,8 @@ window.onload = function(){
 
 	var menu = document.getElementById("menu-btn");
 	var dropdown = document.getElementById("dropdown-content");
-	menu.onclick = function() {showMenu()};
+    menu.onclick = function () { showMenu() };
+
 
 	function stickyNavbar() {
 		if (window.pageYOffset >= sticky) {
@@ -26,5 +28,8 @@ window.onload = function(){
 		}else{
 			dropdown.style.display = "none";
 		}
-	}
+    }
+
+
+
 };

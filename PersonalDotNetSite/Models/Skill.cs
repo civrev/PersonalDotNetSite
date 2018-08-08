@@ -7,6 +7,8 @@ namespace PersonalDotNetSite.Models
 {
     public class Skill
     {
+        public int Id { get; set; }
+
         //name of skill
         public string Name { get; set; }
 
@@ -22,5 +24,14 @@ namespace PersonalDotNetSite.Models
 
         //skill tags for filtering based on type
         //public string[] SkillTags { get; set; }
+
+        public Skill()
+        {
+            ImageThumbnailUrl = "/Images/defaultSmall.png";
+            ImageUrl = "/Images/defaultBig.jpg";
+            Name = "No Title";
+            ShortDescription = "No Short Description";
+            LongDescription = "No Long Description";
+        }
     }
 }

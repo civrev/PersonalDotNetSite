@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.ViewModels
 {
-    public class BioViewModel: GeneralViewModel
+    public class GeneralViewModel
     {
-        public string ShortDescription { get; set; }
-        public string LongDescription { get; set; }
+        public Boolean isAuthenticated { get; set; }
     }
 }

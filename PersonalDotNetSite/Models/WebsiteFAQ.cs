@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.Models
 {
-    public interface ISkillsRepository
+    public class WebsiteFAQ
     {
-        //get all the skills from the DB
-        IEnumerable<Skill> Skills { get; }
+        public string Question { get; set; }
+        public string Answer { get; set; }
     }
 }

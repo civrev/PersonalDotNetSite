@@ -1,0 +1,20 @@
+﻿@model ProjectsViewModel
+
+<div class="row">
+    @foreach (var project in Model.Projects)
+    {
+        @Html.Partial("ProjectCard", project)
+    }
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <i onclick="addNewCard(this)" class="addcard fas fa-plus-square"></i>
+
+            <div id="newcard">
+                @Html.Partial("SkillCard", new Skill())
+            </div>
+
+        }
+    }
+</div>

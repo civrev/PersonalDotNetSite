@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.ViewModels
 {
-    public class InteractViewModel
+    public class InteractViewModel: GeneralViewModel
     {
     }
 }
