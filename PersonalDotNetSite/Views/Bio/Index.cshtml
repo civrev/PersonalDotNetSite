@@ -1,3 +1,24 @@
 ﻿@model BioViewModel
 
-<h1>Bio page coming soon!</h1>
+<div class="paraContainer">
+    @foreach (var para in Model.Paragraphs)
+    {
+        @Html.Partial("Paragraph", para);
+
+    }
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <div id="newpara"></div>
+            @Html.Partial("Paragraph", new Paragraph())
+
+            <div class="col-xs-12 col-md-3">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <i onclick="addNewCard(this)" class="addcard fas fa-plus-square"></i>
+                </div>
+            </div>
+
+        }
+    }
+</div>

@@ -5,12 +5,9 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.Models
 {
-    public interface IProjectsRepositiory
+    public interface IProjectsRepositiory: IRepository<Project>
     {
-        //get all projects, but leave out fields that are only displayed in the detailed page
-        IEnumerable<Project> Projects { get; }
-
-        //show get the entire project with this unique name
-        Project getProjectByName(int id);
+        //made for registering during services
+        Project getRandom();
     }
 }

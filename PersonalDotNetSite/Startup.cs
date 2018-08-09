@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalDotNetSite.Models;
@@ -18,9 +19,12 @@ namespace PersonalDotNetSite
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment hostingEnvironment)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder()
+                           .SetBasePath(hostingEnvironment.ContentRootPath)
+                           .AddJsonFile("appsettings.json")
+                           .Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,8 +33,9 @@ namespace PersonalDotNetSite
         {
             services.AddMvc();
 
-            services.AddTransient<ISkillsRepository, MockDB.SkillsRepo>();
-            services.AddTransient<IProjectsRepositiory, MockDB.ProjectsRepo>();
+            services.AddTransient<ISkillsRepository, SkillsRepository>();
+            services.AddTransient<IProjectsRepositiory, ProjectsRepository>();
+            services.AddTransient<IParagraphRepository, ParaRepository>();
 
             //users will have a cookie on their machine to authenticate
             services.AddAuthentication(sharedOptions =>
@@ -39,6 +44,9 @@ namespace PersonalDotNetSite
                 sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             }).AddAzureAd(options => Configuration.Bind("AzureAd", options))
             .AddCookie();
+
+            services.AddDbContext<AppDbContext>(options =>
+                             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
 
@@ -68,15 +76,16 @@ namespace PersonalDotNetSite
             //routing pattern for site
             app.UseMvc(routes =>
             {
+
                 //Projects using the arg to show a single project in greater detail
                 routes.MapRoute(name: "showProject",
-                                template: "Projects/{action}/{projId}",
-                                defaults: new { Controller = "Projects", action = "Show" });
+                                template: "Projects/{action}/{id}",
+                                defaults: new { controller = "Projects", action = "Show" });
 
                 //Skills using the arg to filter
                 routes.MapRoute(name: "skillFilter",
-                                template: "Skills/{action}/{tagsString?}",
-                                defaults: new { Controller = "Skills", action = "List" });
+                                template: "Skills/{action}/{id?}",
+                                defaults: new { controller = "Skills", action = "List" });
 
                 routes.MapRoute(name: "default",
                                 template: "{controller=Home}/{action=Index}/{id?}");

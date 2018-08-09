@@ -1,0 +1,23 @@
+﻿@model Paragraph
+@{ 
+    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<div class="paragraphs">
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="@controllerName" asp-action="Submit" method="post">
+                <input asp-for="Id" value="@Model.Id" readonly>
+                <input asp-for="Type" value="@controllerName" readonly>
+                <textarea asp-for="Text" class="form-control" rows="5">@Model.Text</textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a asp-controller="@controllerName" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary delBtn">Delete</a>
+        }
+        else
+        {
+            @Model.Text
+        }
+    }
+</div>

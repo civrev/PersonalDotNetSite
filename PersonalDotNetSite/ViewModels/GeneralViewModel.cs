@@ -7,6 +7,6 @@ namespace PersonalDotNetSite.ViewModels
 {
     public class GeneralViewModel
     {
-        public Boolean isAuthenticated { get; set; }
+        
     }
 }

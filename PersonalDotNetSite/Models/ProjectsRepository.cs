@@ -8,26 +8,56 @@ namespace PersonalDotNetSite.Models
     public class ProjectsRepository: IProjectsRepositiory
     {
         private readonly AppDbContext _appDbContext;
+        Random rand;
 
         //constructor
         public ProjectsRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
+            rand = new Random();
         }
 
-        public IEnumerable<Project> Projects => _appDbContext.Projects;
+        public IEnumerable<Project> Items => _appDbContext.Projects;
 
-        public Project getProjectByName(int id)
+        public Project getById(int id)
         {
             //return first one it finds by this name which is unique
-            return _appDbContext.Projects.FirstOrDefault(p => p.Id == id);
+            return Items.FirstOrDefault(e => e.Id == id);
         }
 
-        public Boolean updateProject(Project project)
+        public void insert(Project project)
         {
-            //update a project in the database
-            int pId = project.Id;
-            return false;
+            _appDbContext.Projects.Add(project);
+            _appDbContext.SaveChanges();
+        }
+
+        public void update(Project project)
+        {
+            Project dbProj = getById(project.Id);
+            dbProj.Name = project.Name;
+            dbProj.ShortDescription = project.ShortDescription;
+            dbProj.LongDescription = project.LongDescription;
+            dbProj.ImageThumbnailUrl = project.ImageThumbnailUrl;
+            dbProj.ImageUrl = project.ImageUrl;
+            _appDbContext.SaveChanges();
+        }
+
+        public Boolean ContainsId(int id)
+        {
+            return Items.Any(e => e.Id == id);
+        }
+
+        public void delete(int id)
+        {
+            Project element = getById(id);
+            _appDbContext.Projects.Remove(element);
+            _appDbContext.SaveChanges();
+        }
+
+        public Project getRandom()
+        {
+            int index = rand.Next(0, Items.Count());
+            return Items.ElementAt(index);
         }
     }
 }

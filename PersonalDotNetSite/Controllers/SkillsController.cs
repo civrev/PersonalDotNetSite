@@ -31,7 +31,7 @@ namespace PersonalDotNetSite.Controllers
             if(string.IsNullOrEmpty(tagsString))
             {
                 //if no arg was passed in, get all skills
-                model.Skills = _skillsRepository.Skills;
+                model.Skills = _skillsRepository.Items;
             }
             else
             {
@@ -53,10 +53,44 @@ namespace PersonalDotNetSite.Controllers
                 tags[pos] = tempTagString;
 
                 //at this point we are still grabbing all skills
-                model.Skills = _skillsRepository.Skills;
+                model.Skills = _skillsRepository.Items;
 
             }
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Submit(Skill skill)
+        {
+            Boolean check = _skillsRepository.ContainsId(skill.Id);
+
+            if(check)
+            {
+                //update
+                _skillsRepository.update(skill);
+            }
+            else
+            {
+                //insert
+                _skillsRepository.insert(skill);
+            }
+
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                Boolean check = _skillsRepository.ContainsId(id);
+
+                if (check)
+                {
+                    _skillsRepository.delete(id);
+                }
+            }
+
+            return RedirectToAction("List");
         }
     }
 }

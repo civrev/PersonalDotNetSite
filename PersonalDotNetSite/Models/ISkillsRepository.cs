@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace PersonalDotNetSite.Models
 {
-    public interface ISkillsRepository
+    public interface ISkillsRepository: IRepository<Skill>
     {
-        //get all the skills from the DB
-        IEnumerable<Skill> Skills { get; }
+        //made for registering during services
+        Skill getRandom();
     }
 }

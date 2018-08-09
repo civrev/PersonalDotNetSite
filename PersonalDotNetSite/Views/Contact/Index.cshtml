@@ -1,3 +1,35 @@
-﻿@model ContactViewModel
+﻿@model Contact
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+<form asp-controller="Contact" asp-action="Submit" method="post">
+    <input asp-for="Email" value="@Model.Email" readonly>
+    <br>
+    <label>Alternate Email</label>
+    <input asp-for="AltEmail" class="form-control" value="@Model.AltEmail">
+    <label>Phone Number</label>
+    <input asp-for="PhoneNumber" class="form-control" value="@Model.PhoneNumber">
+    <label>Linked In Account Link</label>
+    <input asp-for="LinkedInLink" class="form-control" value="@Model.LinkedInLink">
+    <label>GitHub Account Link</label>
+    <input asp-for="GitHubLink" class="form-control" value="@Model.GitHubLink">
+    <label>Docker Account Link</label>
+    <input asp-for="DockerLink" class="form-control" value="@Model.DockerLink">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
-<h1>Contact info coming soon!</h1>
+    }
+    else
+    {
+<div class="contactDisplay">
+    <h4>If you have any questions or would like to get in contact with me, see the contact info below!</h4>
+    <h5>Or if you just want to see more of my work online, check out my other profiles!</h5>
+    <h3><span class="badge badge-primary">Email:</span> @Model.Email</h3>
+    <h5><span class="badge badge-secondary">Alt Email:</span> @Model.AltEmail</h5>
+    <h5><span class="badge badge-secondary">Phone:</span> @Model.PhoneNumber</h5>
+    <h5><span class="badge badge-info">LinkedIn:</span><a href="@Model.LinkedInLink"> @Model.LinkedInLink</a></h5>
+    <h5><span class="badge badge-dark">GitHub:</span><a href="@Model.GitHubLink"> @Model.GitHubLink</a></h5>
+    <h5><span class="badge badge-danger">Docker:</span><a href="@Model.DockerLink"> @Model.DockerLink</a></h5>
+</div>
+    }
+}

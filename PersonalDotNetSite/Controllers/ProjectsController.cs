@@ -25,7 +25,7 @@ namespace PersonalDotNetSite.Controllers
             //Lists all projects in cards on site
             ViewBag.Title = "What I've done so far";
             ProjectsViewModel model = new ProjectsViewModel();
-            model.Projects = _projectsRepo.Projects;
+            model.Projects = _projectsRepo.Items;
             return View(model);
         }
 
@@ -33,8 +33,42 @@ namespace PersonalDotNetSite.Controllers
         {
             //shows a specific project on its own page in detail
             ProjectsViewModel model = new ProjectsViewModel();
-            model.DetailedProject = _projectsRepo.getProjectByName(projId);
+            model.DetailedProject = _projectsRepo.getById(projId);
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Submit(Project project)
+        {
+            Boolean check = _projectsRepo.ContainsId(project.Id);
+
+            if (check)
+            {
+                //update
+                _projectsRepo.update(project);
+            }
+            else
+            {
+                //insert
+                _projectsRepo.insert(project);
+            }
+
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                Boolean check = _projectsRepo.ContainsId(id);
+
+                if (check)
+                {
+                    _projectsRepo.delete(id);
+                }
+            }
+
+            return RedirectToAction("List");
         }
     }
 }

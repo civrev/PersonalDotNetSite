@@ -3,21 +3,18 @@ var editBtnOrgTxt;
 
 function editCard(btn) {
     var editableContent = btn.previousElementSibling;
-    var saveCardBtn = btn.nextElementSibling
-    var staticContent = saveCardBtn.nextElementSibling;
+    var staticContent = btn.nextElementSibling;
 
     if (btn.classList.contains("clicked")) {
         btn.classList.remove("clicked");
         btn.textContent = editBtnOrgTxt;
         editableContent.style.display = "none";
-        saveCardBtn.style.display = "none";
         staticContent.style.display = "initial";
     } else {
         btn.classList.add("clicked");
         editBtnOrgTxt = btn.textContent;
         btn.textContent = "Stop Edit"
         editableContent.style.display = "initial";
-        saveCardBtn.style.display = "initial";
         staticContent.style.display = "none";
     }
 }
@@ -31,9 +28,10 @@ function showBiggerCard(element) {
     var cardShortDesc = cardLongDesc.previousElementSibling;
     var card = cardBody.parentElement;
     var cardContainer = card.parentElement;
+    var editBtn = null;
 
     if (element.parentElement.previousElementSibling != null) {
-        var editBtn = element.parentElement.previousElementSibling.previousElementSibling;
+        editBtn = element.parentElement.previousElementSibling;
     }
 
     if (cardContainer.classList.contains("bigCard")) {
@@ -56,7 +54,10 @@ function showBiggerCard(element) {
 
         cardShortDesc.style.display = "block";
         cardLongDesc.style.display = "none";
-        editBtn.style.display = "none";
+
+        if (editBtn != null) {
+            editBtn.style.display = "none";
+        }
 
         //now it is small so change text back
         element.textContent = "Show More";
@@ -88,7 +89,7 @@ function showBiggerCard(element) {
         cardShortDesc.style.display = "none";
         cardLongDesc.style.display = "block";
 
-        if (editBtn.id = "adminEditBtn") {
+        if (editBtn != null) {
             editBtn.style.display = "block";
         }
 
@@ -96,7 +97,7 @@ function showBiggerCard(element) {
         element.textContent = "Show Less";
 
         //put user in view of card
-        window.scrollTo(0, 88);
+        card.ScrollIntoView();
 
     }
 
@@ -108,8 +109,12 @@ function addNewCard(icon) {
     if (icon.classList.contains("clicked")) {
         icon.classList.remove("clicked");
         newCard.style.display = "none";
+        icon.classList.remove("fa-minus-square");
+        icon.classList.add("fa-plus-square");
     } else {
         icon.classList.add("clicked");
         newCard.style.display = "block";
+        icon.classList.add("fa-minus-square");
+        icon.classList.remove("fa-plus-square");
     }
 }

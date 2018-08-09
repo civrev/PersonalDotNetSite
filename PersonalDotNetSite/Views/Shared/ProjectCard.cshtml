@@ -2,52 +2,55 @@
 <!-- This is a partial view -->
 
 <div class="col-xs-12 col-md-3 cards">
-    <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
         <img class="card-img-top" style="max-height: 14rem" src="@Model.ImageThumbnailUrl" alt="@Model.Name">
         <img class="card-img-top bigCardImage" style="max-height: 28rem" src="@Model.ImageUrl" alt="@Model.Name">
         <div class="card-body">
             @{
                 if (User.Identity.IsAuthenticated)
                 {
-                    <div class="editable">
-                        <form>
-                            <div class="form-group">
-                                <label for="@(Model.Id)title">Title</label>
-                                <input class="form-control" id="@(Model.Id)title" value="@Model.Name">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="@(Model.Id)thumbnialURL">Small Image URL</label>
-                                <input class="form-control" id="@(Model.Id)thumbnialURL" value="@Model.ImageThumbnailUrl">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="@(Model.Id)bigImageURL">Big Image URL</label>
-                                <input class="form-control" id="@(Model.Id)bigImageURL" value="@Model.ImageUrl">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="@(Model.Id)shortDesc">Short Description</label>
-                                <textarea class="form-control" id="@(Model.Id)shortDesc" rows="5">@Model.ShortDescription</textarea>
-                            </div>
-
-                            <div class="form-group longDesc">
-                                <label for="@(Model.Id)longDesc">Long Description</label>
-                                <textarea class="form-control" id="@(Model.Id)longDesc" rows="10">@Model.LongDescription</textarea>
-                            </div>
-                        </form>
+            <div class="editable">
+                <form asp-controller="Projects" asp-action="Submit" method="post">
+                    <input asp-for="Id" value="@Model.Id" readonly>
+                    <div class="form-group">
+                        <label for="@(Model.Id)title">Title</label>
+                        <input asp-for="Name" class="form-control" id="@(Model.Id)title" value="@Model.Name">
                     </div>
-                    <a onclick="editCard(this)" class="btn btn-primary editable">Edit</a>
-                    <a onclick="saveCard(this)" class="btn btn-primary editable">Save</a>
-                }
-            }
-            <div class="staticCard">
-                <h5 class="card-title">@Model.Name</h5>
-                <p class="card-text">@Model.ShortDescription</p>
-                <p class="card-text ldesc">@Model.LongDescription</p>
-                <a onclick="showBiggerCard(this)" class="btn btn-primary">Show More</a>
-                <a asp-controller="Projects" asp-action="Show" asp-route-projId="@Model.Id" class="btn btn-primary">Full Details</a>
+
+                    <div class="form-group">
+                        <label for="@(Model.Id)thumbnialURL">Small Image URL</label>
+                        <input asp-for="ImageThumbnailUrl" class="form-control" id="@(Model.Id)thumbnialURL" value="@Model.ImageThumbnailUrl">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="@(Model.Id)bigImageURL">Big Image URL</label>
+                        <input asp-for="ImageUrl" class="form-control" id="@(Model.Id)bigImageURL" value="@Model.ImageUrl">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="@(Model.Id)shortDesc">Short Description</label>
+                        <textarea asp-for="ShortDescription" class="form-control" id="@(Model.Id)shortDesc" rows="5">@Model.ShortDescription</textarea>
+                    </div>
+
+                    <div class="form-group longDesc">
+                        <label for="@(Model.Id)longDesc">Long Description</label>
+                        <textarea asp-for="LongDescription" class="form-control" id="@(Model.Id)longDesc" rows="10">@Model.LongDescription</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a asp-controller="Projects" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary delBtn">Delete</a>
+
             </div>
-        </div>
+                    <a onclick="editCard(this)" class="btn btn-primary editable">Edit</a>
+                    }
+                }
+                <div class="staticCard">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-text">@Model.ShortDescription</p>
+                    <p class="card-text ldesc">@Model.LongDescription</p>
+                    <a onclick="showBiggerCard(this)" class="btn btn-primary smBtn">Show More</a>
+                    <a asp-controller="Projects" asp-action="Show" asp-route-id="@Model.Id" class="btn btn-primary smBtn">Full Details</a>
+                </div>
+            </div>
     </div>
 </div>

@@ -1,3 +1,50 @@
 ﻿@model HomeViewModel
 
-<h1>Home page coming soon!</h1>
+<div class="paraContainer">
+    @foreach (var para in Model.Paragraphs)
+    {
+        @Html.Partial("Paragraph", para);
+
+    }
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <div id="newpara"></div>
+            @Html.Partial("Paragraph", new Paragraph())
+
+            <div class="col-xs-12 col-md-3">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <i onclick="addNewCard(this)" class="addcard fas fa-plus-square"></i>
+                </div>
+            </div>
+
+        }
+    }
+
+    <div class="homeCards">
+            <div class="bg-dark clearfix rounded">
+                <h4 class="float-left homeTitles">Here's a sample of what I know:</h4>
+                <a asp-controller="Skills" asp-action="List" class="btn btn-secondary float-right">See more skills</a>
+            </div>
+        <div class="row">
+            @foreach (var skill in Model.Skills)
+            {
+                @Html.Partial("SkillCard", skill)
+            }
+        </div>
+    </div>
+
+    <div class="homeCards">
+        <div class="bg-dark clearfix rounded">
+            <h4 class="float-left homeTitles">Here's a sample of what I've Done:</h4>
+            <a asp-controller="Projects" asp-action="List" class="btn btn-secondary float-right">See more projects</a>
+        </div>
+        <div class="row">
+            @foreach (var project in Model.Projects)
+            {
+                @Html.Partial("ProjectCard", project)
+            }
+        </div>
+    </div>
+</div>

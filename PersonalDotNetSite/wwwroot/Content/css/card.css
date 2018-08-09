@@ -28,3 +28,8 @@
 #newcard + .cards {
     display: none;
 }
+
+.btn.btn-primary.delBtn{
+    background-color: red;
+    border-color: red;
+}

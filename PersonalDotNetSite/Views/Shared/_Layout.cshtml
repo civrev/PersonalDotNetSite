@@ -16,18 +16,21 @@
     <link href="~/Content/css/base.css" rel="stylesheet" />
     <link href="~/Content/css/card.css" rel="stylesheet" />
     <link href="~/Content/css/login.css" rel="stylesheet" />
+    <link href="~/Content/css/paragraphs.css" rel="stylesheet" />
+    <link href="~/Content/css/header.css" rel="stylesheet" />
+    <link href="~/Content/css/home.css" rel="stylesheet" />
 
     <script src="~/Content/js/base.js"></script>
     <script src="~/Content/js/card.js"></script>
     <script src="~/Content/js/login.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/js/dist/util.js"></script>
 
 </head>
 <body>
     <div class="header">
-        <h2>Scroll Down</h2>
-        <p>Scroll down to see the sticky effect.</p>
+        @Html.Partial("Header")
     </div>
 
     <div class="navigation-bar" id="navigation-bar">
@@ -62,7 +65,7 @@
                         <li><a asp-controller="Skills" asp-action="List">Skills</a></li>
                         <li><a asp-controller="Projects" asp-action="List">Projects</a></li>
                         <li><a asp-controller="Website" asp-action="Index">This Website</a></li>
-                        <li><a asp-controller="Interact" asp-action="Index">Interact</a></li>
+                        <li style="display:none"><a asp-controller="Interact" asp-action="Index">Interact</a></li>
                         <li><a asp-controller="Contact" asp-action="Index">Contact Me</a></li>
                     </ul>
                 </div>
