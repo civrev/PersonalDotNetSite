@@ -1,3 +1,5 @@
+#Run this to set up all the services (all free with 12 month free trial)
+
 #Variables
 RES_GROUP="PersonalDotNetWebsite"
 RES_LOC="CentralUS"

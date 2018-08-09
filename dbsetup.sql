@@ -1,3 +1,5 @@
+--The Database I set up for my site
+
 CREATE TABLE skills (
     Id int IDENTITY PRIMARY KEY,
     Name varchar(30) NOT NULL,

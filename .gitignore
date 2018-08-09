@@ -331,6 +331,10 @@ ASALocalRun/
 
 #ClientSide Libs
 PersonalDotNetSite/wwwroot/lib
+PersonalDotNetSite/node_modules
+
+#Images shouldn't be on github
+PersonalDotNetSite/wwwroot/Images
 
 #Don't upload your DB connection string to the web
 PersonalDotNetSite/appsettings.json
