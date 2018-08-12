@@ -10,5 +10,11 @@ namespace PersonalDotNetSite.Models
         public int Id { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
+
+        public WebsiteFAQ()
+        {
+            Question = "no question";
+            Answer = "no answer";
+        }
     }
 }

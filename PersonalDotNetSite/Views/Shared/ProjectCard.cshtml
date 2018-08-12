@@ -46,10 +46,10 @@
                 }
                 <div class="staticCard">
                     <h5 class="card-title">@Model.Name</h5>
-                    <p class="card-text">@Model.ShortDescription</p>
-                    <p class="card-text ldesc">@Model.LongDescription</p>
+                    <p class="card-text">@Html.Raw(@Model.ShortDescription)</p>
+                    <p class="card-text ldesc">@Html.Raw(@Model.LongDescription)</p>
                     <a onclick="showBiggerCard(this)" class="btn btn-primary smBtn">Show More</a>
-                    <a asp-controller="Projects" asp-action="Show" asp-route-id="@Model.Id" class="btn btn-primary smBtn">Full Details</a>
+                    <a asp-controller="Projects" asp-action="Show" asp-route-id="@Model.Id" class="btn btn-primary smBtn" style="display: none">Full Details</a>
                 </div>
             </div>
     </div>

@@ -14,10 +14,12 @@ namespace PersonalDotNetSite.Controllers
     {
 
         private readonly IParagraphRepository _repository;
+        private readonly IFaqRepository _faqRepository;
 
-        public WebsiteController(IParagraphRepository pr)
+        public WebsiteController(IParagraphRepository pr, IFaqRepository fr)
         {
             _repository = pr;
+            _faqRepository = fr;
         }
 
         // GET: /<controller>/
@@ -25,6 +27,7 @@ namespace PersonalDotNetSite.Controllers
         {
             WebsiteViewModel model = new WebsiteViewModel();
             model.Paragraphs = _repository.getByType("Website");
+            model.Faqs = _faqRepository.Items;
             ViewBag.Title = "About this site";
             return View(model);
         }
@@ -57,6 +60,40 @@ namespace PersonalDotNetSite.Controllers
                 if (check)
                 {
                     _repository.delete(id);
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult SubmitFaq(WebsiteFAQ faq)
+        {
+            Boolean check = _repository.ContainsId(faq.Id);
+
+            if (check)
+            {
+                //update
+                _faqRepository.update(faq);
+            }
+            else
+            {
+                //insert
+                _faqRepository.insert(faq);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteFaq(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                Boolean check = _faqRepository.ContainsId(id);
+
+                if (check)
+                {
+                    _faqRepository.delete(id);
                 }
             }
 

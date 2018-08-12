@@ -21,4 +21,32 @@
 
         }
     }
+
+    <div class="faqCF">
+        <div class="bg-dark clearfix rounded">
+            <h4 class="float-left faqTitle">Website FAQ:</h4>
+        </div>
+    </div>
+
+    @foreach (var faq in Model.Faqs)
+    {
+        @Html.Partial("Faq", faq);
+
+    }
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <div id="newfaq"></div>
+            @Html.Partial("Faq", new WebsiteFAQ());
+
+            <div class="col-xs-12 col-md-3">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <i onclick="addNewCard(this)" class="addcard fas fa-plus-square"></i>
+                </div>
+            </div>
+
+        }
+    }
+
 </div>

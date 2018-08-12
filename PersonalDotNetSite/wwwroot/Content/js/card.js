@@ -1,4 +1,4 @@
-﻿var oldPos;
+﻿
 var editBtnOrgTxt;
 
 function editCard(btn) {
@@ -62,13 +62,11 @@ function showBiggerCard(element) {
         //now it is small so change text back
         element.textContent = "Show More";
 
-        //put user back in spot
-        window.scrollTo(0, oldPos);
+        //put user in view of card
+        card.scrollIntoView();
 
     } else {
 
-        //keep user's spot
-        oldPos = cardContainer.offsetTop;
 
         //card is small, so make it big
         cardContainer.classList.add("bigCard");
@@ -97,7 +95,7 @@ function showBiggerCard(element) {
         element.textContent = "Show Less";
 
         //put user in view of card
-        card.ScrollIntoView();
+        card.scrollIntoView();
 
     }
 

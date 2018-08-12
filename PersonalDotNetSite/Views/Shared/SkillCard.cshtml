@@ -41,14 +41,14 @@
                         </form>
                         <a asp-controller="Skills" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary delBtn">Delete</a>
                     </div>
-                    <a onclick="editCard(this)" class="btn btn-primary editable">Edit</a>
+                    <a onclick="editCard(this)" class="btn btn-secondary editable">Edit</a>
                 }
             }
             <div class="staticCard">
                 <h5 class="card-title">@Model.Name</h5>
-                <p class="card-text">@Model.ShortDescription</p>
-                <p class="card-text ldesc">@Model.LongDescription</p>
-                <a onclick="showBiggerCard(this)" class="btn btn-primary">Show More</a>
+                <p class="card-text">@Html.Raw(@Model.ShortDescription)</p>
+                <p class="card-text ldesc">@Html.Raw(@Model.LongDescription)</p>
+                <a onclick="showBiggerCard(this)" class="btn btn-secondary smBtn">Show More</a>
             </div>
         </div>
     </div>

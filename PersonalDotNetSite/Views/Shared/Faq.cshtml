@@ -1,0 +1,21 @@
+﻿@model WebsiteFAQ
+
+<div class="faq">
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Website" asp-action="SubmitFaq" method="post">
+                <input asp-for="Id" value="@Model.Id" readonly><br>
+                <input asp-for="Question" value="@Model.Question" class="w-100"><br>
+                <input asp-for="Answer" value="@Model.Answer" class="w-100"><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a asp-controller="Website" asp-action="DeleteFaq" asp-route-id="@Model.Id" class="btn btn-primary delBtn">Delete</a>
+        }
+        else
+        {
+            <p class="text-light bg-info faq-question rounded">Q: @Html.Raw(@Model.Question)</p>
+            <p class="text-dark faq-answer">A: @Html.Raw(@Model.Answer)</p>
+        }
+    }
+</div>

@@ -36,6 +36,7 @@ namespace PersonalDotNetSite
             services.AddTransient<ISkillsRepository, SkillsRepository>();
             services.AddTransient<IProjectsRepositiory, ProjectsRepository>();
             services.AddTransient<IParagraphRepository, ParaRepository>();
+            services.AddTransient<IFaqRepository, FaqRepository>();
 
             //users will have a cookie on their machine to authenticate
             services.AddAuthentication(sharedOptions =>
